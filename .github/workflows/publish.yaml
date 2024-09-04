@@ -1,0 +1,37 @@
+name: Publish to Pub.dev
+
+on:
+  push:
+    tags:
+      - "v{{version}"
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-checks:
+    name: Run code checks and quality tools
+    uses: ./.github/workflows/ci.yaml
+
+  publish:
+    needs: [code-checks]
+    permissions:
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1.6.5
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Publish
+        run: dart pub publish --force

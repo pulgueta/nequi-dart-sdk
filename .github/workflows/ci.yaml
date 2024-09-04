@@ -2,9 +2,22 @@ name: CI
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
+    branches:
+      - main
+  workflow_call:
+    secrets:
+      GH_TOKEN:
+        required: false
+
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
