@@ -1,4 +1,4 @@
-import 'package:nequi_dart_sdk/nequi_dart_sdk.dart';
+import 'package:pulgueta_nequi_dart/nequi_dart_sdk.dart';
 
 void main() {
   var awesome = Awesome();

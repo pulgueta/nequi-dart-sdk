@@ -1,14 +1,10 @@
-name: nequi_dart_sdk
-description: A starting point for Dart libraries or applications.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+name: pulgueta_nequi_dart
+description: SDK de la comunidad de Nequi para Dart
+version: 0.0.1
+repository: https://github.com/pulgueta/nequi-dart-sdk
 
 environment:
   sdk: ^3.5.2
-
-# Add regular dependencies here.
-dependencies:
-  # path: ^1.8.0
 
 dev_dependencies:
   commitlint_cli: ^0.7.1
